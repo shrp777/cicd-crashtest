@@ -17,10 +17,5 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag cicd-crashtest:$(date +%s)
 
+    - uses: actions/upload-artifact@v4.3.4
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4.3.4
-      with:
-        # Artifact name
-        name: cicd-crashtest
-        # A file, directory or wildcard pattern that describes what to upload
-        path: error
