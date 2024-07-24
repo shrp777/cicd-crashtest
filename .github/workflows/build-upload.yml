@@ -2,24 +2,22 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag cicd-crashtest:$(date +%s)
+      - uses: actions/checkout@v4
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag cicd-crashtest:$(date +%s)
 
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4.3.4
-      with:
-        name: cicd-crashtest
-        path: cicd-crashtest
-        if-no-files-found: warn
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.4
+        with:
+          name: cicd-crashtest
+          path: cicd-crashtest:$(date +%s)
+          if-no-files-found: warn
