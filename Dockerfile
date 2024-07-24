@@ -14,6 +14,9 @@ RUN npm install
 COPY . .
 
 # Compiler le code TypeScript
+RUN npm test
+
+# Compiler le code TypeScript
 RUN npm run build
 
 # Exposer le port de l'application

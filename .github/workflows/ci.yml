@@ -29,10 +29,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ts-cicd:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/cicd-crashtest:latest
 
       - name: Run tests
-        run: docker run ${{ secrets.DOCKER_USERNAME }}/ts-cicd:latest npm test
+        run: docker run ${{ secrets.DOCKER_USERNAME }}/cicd-crashtest:latest npm test
 
       - name: Deploy to production
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
